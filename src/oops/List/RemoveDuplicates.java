@@ -1,70 +1,23 @@
 package oops.List;
-
+// https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/
 public class RemoveDuplicates {
 
-
-    public ListNode swapPairs1(ListNode head) {
-
-        if (head == null || head.next == null){
-            return head;
+    // Remove Duplicates from sorted LinkedList.
+    public ListNode deleteDuplicates(ListNode node) {
+        if(node == null){
+            return node;
         }
-        ListNode current = head;
-        ListNode next = current.next;
-        // current = next.next;
-        //  and next = current.next;
-
-        while (next != null){
-            int temp = current.val;
-            current.val = next.val;
-            next.val = temp;
-
-            current = next.next;
-            if (current == null){
-                next = next.next;
+        ListNode head = node;
+        while(node.next != null){
+            if(node.val == node.next.val){
+                node.next = node.next.next;
             }
             else {
-                next = current.next;
-            }
-        }
-
-        return head;
-    }
-
-    public ListNode swapPairs(ListNode head) {
-
-        if (head == null || head.next == null){
-            return head;
-        }
-        ListNode prev = null;
-        ListNode current = head;
-        ListNode next = current.next;
-
-        while (next != null){
-            if (current == head){
-                current.next = next.next;
-                next.next = current;
-            }
-            if (next.next == null){
-                prev.next = next;
-                next.next = current;
-                current.next = null;
-            }
-            else {
-                prev.next = next;
-                current.next = next.next;
-                next.next = current;
-            }
-
-            prev = current;
-            current = current.next;
-            if (current != null){
-                next = current.next;
+                node = node.next;
             }
         }
         return head;
     }
-
-
 
     public class ListNode {
         int val;

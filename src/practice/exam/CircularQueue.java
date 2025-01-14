@@ -7,9 +7,6 @@ package practice.exam;
 
 */
 
-import java.util.PriorityQueue;
-import java.util.Queue;
-
 public class CircularQueue {
     private int DEFAULT_SIZE;
     private int[] data;

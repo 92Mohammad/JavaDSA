@@ -2,8 +2,6 @@ package trees;
 
 import java.util.*;
 
-
-
 class LevelOrderTraversal{
     class Node {
         private int value;
@@ -18,8 +16,6 @@ class LevelOrderTraversal{
             return this.value;
     
         }
-    
-    
     }
     private static final String Queue = null;   
     private Node root;
@@ -54,7 +50,6 @@ class LevelOrderTraversal{
         queue.add(null);
         while(!queue.isEmpty()){
             Node temp = queue.poll();
-            
         }
 
 

@@ -47,6 +47,8 @@ public class CustomLinkedList {
         size++;
     }
     public void insert(int value, int index){
+        Node newNode = new Node(value);
+
         if(index > size){
             throw new ArithmeticException("Index is greater than size");
         }
@@ -54,22 +56,31 @@ public class CustomLinkedList {
             insertFirst(value);
             return;
         }
-        if (index == size){
-            insertLast(value);
+        int currentIndex = 0;
+        Node current = this.head;
+        while (current != null && currentIndex < index -1){
+            current = current.next;
+            currentIndex++;
+        }
+        if (current == null){
+            System.out.println("Position is invalid");
             return;
         }
-        Node temp = head;
-        Node node = new Node(value);
-        while(index != 0){
-            if(index == 1){
-                node.next = temp.next;
-                temp.next = node;
-            }
-            else {
-                temp = temp.next;
-            }
-            index--;
-        }
+        newNode.next = current.next;
+        current.next = newNode;
+
+//        Node temp = head;
+//        Node node = new Node(value);
+//        while(index != 0){
+//            if(index == 1){
+//                node.next = temp.next;
+//                temp.next = node;
+//            }
+//            else {
+//                temp = temp.next;
+//            }
+//            index--;
+//        }
         size++;
     }
 

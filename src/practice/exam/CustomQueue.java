@@ -3,28 +3,28 @@ package practice.exam;
 class CustomQueue {
 
     private int[] data;
-    private static final int DEFAULT_SIZE = 10;
-    private int front, rear; 
+    private int CAPACITY;
+    private int front, rear;
 
-
-    public CustomQueue(){
-        front = rear = 0;
-        this.data = new int[DEFAULT_SIZE];
+    public CustomQueue(int c){
+        this.front = 0;
+        this.rear = -1;
+        this.CAPACITY = c;
+        this.data = new int[CAPACITY];
     }   
-    public boolean insert(int item) throws QueueOverFlowException{
+    public void enqueue(int item) throws QueueOverFlowException{
         if (isFull()){
             throw new QueueOverFlowException("Queue is full");
         }
-        data[rear++] = item;
-        return true;
+        data[++rear] = item;
     }
-    public int remove() throws EmptyQueueException{
-        if (front == rear){
+    public int dequeue() throws EmptyQueueException{
+        if (front > rear){
             throw new EmptyQueueException("can not remove from empty queue");
         }
         int removedItem = data[front];
         // here we need to shift all the element to left
-        for (int i = front; i < rear; i++) {
+        for (int i = 0; i < rear; i++) {
             data[i] = data[i + 1];
         }
         rear--;
@@ -32,18 +32,12 @@ class CustomQueue {
     }
 
     private boolean isFull(){
-        return rear == data.length;
+        return rear == this.CAPACITY - 1;
     }
 
     public void display(){
-        for (int i = front; i < rear; i++) {
-            if (i != rear - 1){
+        for (int i = front; i <= rear; i++) {
             System.out.print(data[i] + "<--");
-
-            }
-            else {
-                System.out.print(data[i]);
-            }
         }
         System.out.println();
     }
@@ -51,7 +45,6 @@ class CustomQueue {
     public int front() throws EmptyQueueException{
         if (front == 0){
             throw new EmptyQueueException("Queue is empty");
-
         }
         return data[front];
     }

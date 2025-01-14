@@ -25,7 +25,7 @@ public class LevelOrder extends BinaryTree{
             return result;
         }
 
-        Queue<Node> queue = new   LinkedList<>();
+        Queue<Node> queue = new LinkedList<>();
         queue.add(node);
 
         while(!queue.isEmpty()){

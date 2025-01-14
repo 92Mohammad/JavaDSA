@@ -1,9 +1,14 @@
 package oops.List;
 //https://leetcode.com/problems/intersection-of-two-linked-lists/
 public class IntersectionOfLinkedList {
-
-
-
+    public static class ListNode {
+        int val;
+        ListNode next;
+        ListNode(int x) {
+            val = x;
+            next = null;
+        }
+    }
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         ListNode first = headA;
         ListNode second = headB;
@@ -33,22 +38,11 @@ public class IntersectionOfLinkedList {
 
         return node1;
     }
-
-
-    private ListNode findStartNode(ListNode node2, int end){
-        ListNode temp = node2;
+    private ListNode findStartNode(ListNode node, int end){
+        ListNode temp = node;
         for (int i = 0; i < end; i++) {
             temp = temp.next;
         }
         return temp;
     }
-    public class ListNode {
-      int val;
-      ListNode next;
-      ListNode(int x) {
-          val = x;
-          next = null;
-      }
-    }
-
 }
